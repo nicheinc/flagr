@@ -150,6 +150,8 @@ flagr <- function(program_name="", trailingOnly=TRUE) {
     cat(paste0(pretty, flag_string, "\n"))
     quit()
   }
+
+  structure(class="flagr", environment())
 }
 
 can_convert <- function(value="", type="character") {
