@@ -10,10 +10,10 @@ Implements command-line flag parsing in R
 
 ## About <a name="about"></a>
 
-Although it's fun to play with R in its REPL environment via an interactive R
-session or in RStudio, sometimes its necessary to execute an R utility via the
-command line. `flagr` lets you write a job or script using R's strong statistical
-capabilities and invoke it using the command line.
+Although it's fun to play with R in its REPL environment using RStudio or an
+interactive R session in your shell, sometimes its necessary to execute an R
+utility via the command line. `flagr` lets you write a job or script using R's
+strong statistical capabilities and invoke it using the command line.
 
 This is useful if you want to specify environment configurations, model
 parameters, file locations, etc.
@@ -76,3 +76,39 @@ $ Rscript test.R
 echo...echo...echo
 $
 ```
+which prints the default value of the `echo` argument. You could also specify
+the value you want to get echoed back:
+
+```sh
+$ Rscript test.R --echo pickles
+pickles
+$
+```
+or
+```sh
+$ Rscript test.R -echo cherry pickles
+cherry
+ pickles
+$
+$ Rscript test.R -echo "cherry pickles"
+cherry pickles
+$
+```
+or
+```sh
+$ Rscript test.R -echo "${PATH}"
+/home/nicheinc/go/bin:/usr/local/go/bin:/home/nicheinc/.local/bin:/home/nicheinc/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/nicheinc/bin
+```
+
+The first example illustrates basic usage in which we want the program to print
+exactly what we passed in to the `--echo` flag.
+
+The second example shows how `flagr` supports single dash (`-`) flags as well
+as double dash flags (`--`).  It also shows how `flagr` automatically
+vectorizes arguments that are separated by a space; printing the whole string
+`cherry pickles` on one line requires you to enclose it in quotes, otherwise
+the `paste0(echo, "\n")` will concatenate the vector `echo=c("cherry", "
+pickles")` with the new line character so that you get `cherry\n pickles\n`.
+
+The last example shows how you can pass in variables you have defined in your
+shell.
