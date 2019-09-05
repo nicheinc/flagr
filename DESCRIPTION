@@ -1,0 +1,12 @@
+Package: flagr
+Title: Implements Command-Line Flag Parsing
+Version: 0.0.1
+Authors@R: c(
+	person("Daniel", "Salmon", "dsalmon@niche.com", c("aut", "cre"))
+)
+Description: The package offers a pure R implementation of command-line flag parsing useful for parametrizing R jobs that are executed from outside an interactive R session.
+License: MIT
+URL: https://github.com/nicheinc/flagr
+BugReports: https://github.com/nicheinc/flagr/issues
+Encoding: UTF-8
+LazyData: true
