@@ -1,4 +1,4 @@
-# flagr <img src="figures/flagr_logo.png" height="125" align="right">
+# flagr <img src="figures/flagr_logo.png" height="150" align="right">
 Implements command-line flag parsing in R
 
 # Table of Contents
